@@ -81,13 +81,13 @@ class OrbitPublisher(Node):
                          zero tells ROS to give you the most recent transform.
         """
         try:
-            tf_world_to_robot: TransformStamped = self.tfBuffer.lookup_transform('world', 'base_link_gt',
+            tf_robot_to_world: TransformStamped = self.tfBuffer.lookup_transform('world', 'base_link_gt',
                                                                                  rclpy.time.Time())
         except tf2_ros.TransformException:
-            self.get_logger().info('no transform from world to base_link_gt found')
+            self.get_logger().info('no transform from base_link_gt to world found')
             return
 
-        robot_to_world: np.ndarray = self.tf_to_se3(tf_world_to_robot.transform)
+        robot_to_world: np.ndarray = self.tf_to_se3(tf_robot_to_world.transform)
 
         new_t = time.perf_counter()
         time_elapsed = new_t - self.t
