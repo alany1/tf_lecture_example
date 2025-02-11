@@ -4,3 +4,6 @@ log/
 test/
 .DS_Store
 *.swp
+
+.idea/
+__pycache__/
