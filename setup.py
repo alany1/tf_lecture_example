@@ -20,7 +20,9 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'orbit_publisher = tf_lecture.orbit_publisher:main',
+            'sun = tf_lecture.sun:main',
+            'planet = tf_lecture.planet:main',
+            'satellite = tf_lecture.satellite:main',
         ],
     },
 )
